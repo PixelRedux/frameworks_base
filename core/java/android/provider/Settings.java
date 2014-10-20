@@ -4736,6 +4736,12 @@ public final class Settings {
         public static final String BATTERY_AROUND_LOCKSCREEN_RING = "battery_around_lockscreen_ring";
 
         /**
+         * Force dual panel for settings
+         * @hide
+         */
+        public static final String FORCE_DUAL_PANEL = "force_dual_panel";
+
+        /**
          * Recent card background color
          *
          * @hide
