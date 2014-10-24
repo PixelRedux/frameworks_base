@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package com.android.internal.util.crdroid;
+package com.android.internal.util.pixel;
 
 import android.app.Activity;
 import android.app.ActivityManager;

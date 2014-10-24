@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.systemui.crdroid;
+package com.android.systemui.pixel;
 
 import android.app.KeyguardManager;
 import android.content.Context;

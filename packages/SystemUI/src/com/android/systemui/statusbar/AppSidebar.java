@@ -53,7 +53,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.systemui.R;
-import com.android.systemui.crdroid.TriggerOverlayView;
+import com.android.systemui.pixel.TriggerOverlayView;
 import com.android.systemui.statusbar.sidebar.*;
 
 import java.util.ArrayList;
