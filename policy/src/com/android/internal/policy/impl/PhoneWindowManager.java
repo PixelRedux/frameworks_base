@@ -22,10 +22,10 @@ import android.app.ActivityManagerNative;
 import android.app.IUiModeManager;
 import android.app.KeyguardManager;
 import android.app.AppOpsManager;
+import android.app.PacBusyDialog;
 import android.app.ProgressDialog;
 import android.app.SearchManager;
 import android.app.StatusBarManager;
-import android.app.PacBusyDialog;
 import android.app.UiModeManager;
 import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
@@ -83,7 +83,6 @@ import dalvik.system.DexClassLoader;
 
 import android.util.DisplayMetrics;
 import android.util.EventLog;
-import android.view.LayoutInflater;
 import android.util.Log;
 import android.util.Slog;
 import android.util.SparseArray;
@@ -99,6 +98,7 @@ import android.view.InputEventReceiver;
 import android.view.KeyCharacterMap;
 import android.view.KeyCharacterMap.FallbackAction;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
@@ -112,9 +112,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.VolumePanel;
 import android.widget.Toast;
+import android.media.AudioService;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.media.AudioService;
 
 import com.android.internal.R;
 import com.android.internal.policy.PolicyManager;
@@ -6019,6 +6019,27 @@ public class PhoneWindowManager implements WindowManagerPolicy {
 
     PacBusyDialog mBootMsgDialog = null;
 
+    /**
+     * name of package currently being dex optimized
+     * as shown through this.showBootMessage(msg, always);
+     */
+    static String currentPackageName;
+
+    /** {@inheritDoc} */
+    public void setPackageName(String pkgName) {
+        if (pkgName == null) {
+            pkgName = "stop.looking.at.me.swan";
+        }
+        this.currentPackageName = pkgName;
+    }
+
+    // debugging 'Android is upgrading...' ProgressDialog
+    final boolean DEBUG_BOOTMSG = false;
+
+    // this method is called to create, if needed, and update boot ProgressDialog
+    // see @link frameworks/base/services/java/com/android/server/pm/
+    //              PackageManagerService.performBootDexOpt()
+
     /** {@inheritDoc} */
     public void showBootMessage(final CharSequence msg, final boolean always) {
         if (mHeadless) return;
@@ -6039,9 +6060,10 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     mBootMsgDialog.setCancelable(false);
                     mBootMsgDialog.show();
                 }
-    if (!mBootMsgDialog.isShowing())
-                     mBootMsgDialog.show();				
+		if (!mBootMsgDialog.isShowing())
+                     mBootMsgDialog.show();
                 mBootMsgDialog.setMessage(msg);
+              
             }
         });
     }

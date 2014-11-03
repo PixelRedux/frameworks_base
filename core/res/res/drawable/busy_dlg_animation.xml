@@ -11,6 +11,4 @@
     <item android:duration="50" android:drawable="@drawable/busy_dlg_animation_7" />
     <item android:duration="50" android:drawable="@drawable/busy_dlg_animation_8" />
     <item android:duration="50" android:drawable="@drawable/busy_dlg_animation_9" />
-    <item android:duration="50" android:drawable="@drawable/busy_dlg_animation_10" />
-    <item android:duration="50" android:drawable="@drawable/busy_dlg_animation_11" />
 </animation-list>

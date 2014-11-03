@@ -199,8 +199,14 @@
     <drawable name="notification_template_icon_bg">#c0282828</drawable>
     <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
 
-    <!-- busy dialog color -->
-    <color name="du_red">#ffab0000</color>
+    <!-- iokp rom colors -->
+    
+    <color name="iokp_yellow">#ffebee00</color>
+    <color name="iokp_red">#ffe61010</color>
+    <color name="iokp_orange">#ffff890b</color>
+    <color name="iokp_blue">#ff07eded</color>
+    <color name="iokp_pink">#ffdb7fb0</color>
+    <color name="iokp_white">#ffffffff</color>
 
     <!-- Keyguard colors -->
     <color name="keyguard_avatar_frame_color">#ffffffff</color>

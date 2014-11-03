@@ -324,16 +324,11 @@ public final class ShutdownThread extends Thread {
         // throw up an indeterminate system dialog to indicate radio is
         // shutting down.
         PacBusyDialog pd = new PacBusyDialog(context, android.R.style.Theme_Translucent_NoTitleBar);
-        if (mReboot) {
-            pd.setTitle(context.getText(com.android.internal.R.string.reboot_system));
-            pd.setMessage(context.getText(com.android.internal.R.string.reboot_progress));
-        } else {
-            pd.setTitle(context.getText(com.android.internal.R.string.power_off));
-            pd.setMessage(context.getText(com.android.internal.R.string.shutdown_progress));
-        }
+        //pd.setTitle(context.getText(com.android.internal.R.string.power_off));
+        pd.setMessage(context.getText(shutdownMessageId));
         //pd.setIndeterminate(true);
         pd.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
-  pd.getWindow().addFlags(
+	pd.getWindow().addFlags(
                  WindowManager.LayoutParams.FLAG_DIM_BEHIND
                  | WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
         pd.getWindow().setDimAmount(1);
